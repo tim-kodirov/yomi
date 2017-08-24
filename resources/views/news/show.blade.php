@@ -17,9 +17,9 @@
 
 		<img src= "{{ asset('images/'.$news->image) }}" class = "img-responsive" width = "100%">
 		<p class = "info margin-top">
-			Создано: {{ date('d.m.y, h:i', strtotime($news->created_at)) }}
+			{{ __('app.created') }}: {{ date('d.m.y, h:i', strtotime($news->created_at)) }}
 			</br>
-			Изменено: {{ date('d.m.y, h:i', strtotime($news->updated_at)) }}
+			{{ __('app.updated') }}: {{ date('d.m.y, h:i', strtotime($news->updated_at)) }}
 		</p>
 
 				

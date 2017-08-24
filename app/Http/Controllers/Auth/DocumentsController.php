@@ -11,6 +11,11 @@ use Session;
 
 class DocumentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +23,8 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        $documents = Document::orderBy('id', 'DESC')->paginate(30);
         $categories = Category::all();
-        return view('documents.index')->withDocuments($documents)->withCategories($categories);
+        return view('documents.index')->withCategories($categories);
     }
 
     /**
@@ -30,7 +34,9 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        
+        $categories = Category::all();
+
+        return view('documents.create')->withCategories($categories);
     }
 
     /**
@@ -41,9 +47,9 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($resuest, [
-                'title_uz' => 'required|max:191',
-                'title_ru' => 'required|max:191',
+        $this->validate($request, [
+                'title_uz' => 'required|max:400',
+                'title_ru' => 'required|max:400',
                 'body_uz'  => 'required',
                 'body_ru'  => 'required',
                 'category_id' => 'exists:categories,id',
@@ -72,7 +78,9 @@ class DocumentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $document = Document::find($id);
+
+        return view('documents.show')->withDocument($document);
     }
 
     /**
@@ -83,7 +91,10 @@ class DocumentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $document = Document::find($id);
+        $categories = Category::all();
+
+        return view('documents.edit')->withDocument($document)->withCategories($categories);
     }
 
     /**
@@ -95,9 +106,9 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($resuest, [
-                'title_uz' => 'required|max:191',
-                'title_ru' => 'required|max:191',
+        $this->validate($request, [
+                'title_uz' => 'required|max:400',
+                'title_ru' => 'required|max:400',
                 'body_uz'  => 'required',
                 'body_ru'  => 'required',
                 'category_id' => 'exists:categories,id',
@@ -113,7 +124,7 @@ class DocumentsController extends Controller
         $document->category()->associate($category);
         $document->save();
 
-        Session::flash('success', 'The document has successfully been added!');
+        Session::flash('success', 'The document has successfully been updated!');
 
         return redirect()->route('documents.index');
     }

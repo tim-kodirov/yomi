@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h1 class = "text-center">Видео</h1>
+	<h1 class = "text-center">{{ __('app.videos') }}</h1>
 	<hr>
 	<div class="row">
 		<div class="col-md-8">
@@ -18,7 +18,7 @@
 					</video>
 
 					<p class = "info margin-top">
-						Создано: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($video->created_at))}}</span>
+						{{ __('app.created') }}: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($video->created_at))}}</span>
 							<br>
 					</p>
 					<p class = "text-right">
@@ -31,17 +31,17 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        
-						        <h4 class="modal-title text-center">Удалить?</h4>
+						        <h4 class="modal-title text-center">{{ __('app.delete') }}?</h4>
 						      </div>
 						      <div class="modal-body">
 						        <div class="row">
 						        	<div class="col-md-6">
 						        		{{ Form::open(['route' => ['videos.destroy', $video->id ], 'method' => 'DELETE'])}}
-											{{ Form::submit('Да', ['class' => 'btn btn-block btn-danger'])}}
+											{{ Form::submit( __('app.yes'), ['class' => 'btn btn-block btn-danger'])}}
 						        		{{ Form::close() }}
 						        	</div>
 						        	<div class="col-md-6">
-						        		<button type="button" class="btn btn-block btn-success" data-dismiss="modal">Нет</button>
+						        		<button type="button" class="btn btn-block btn-success" data-dismiss="modal">{{ __('app.no') }}</button>
 						        	</div>
 						        </div>
 						      </div>
@@ -65,7 +65,7 @@
 		<div class="col-md-4">
 			<div class = "panel panel-default">
 				<div class = "panel-heading text-center">
-					<h3 class = "margin">Добавить видео</h3>
+					<h3 class = "margin">{{ __('app.create') }}</h3>
 				</div>
 
 				<div class = "panel-body">
@@ -75,7 +75,7 @@
 						</div>
 
 						<div class = "form-group">
-							{{ Form::label('title_uz', 'Заглавие(узб): ', ['class' => 'control-label'])}}
+							{{ Form::label('title_uz', 'Сарлавха(узб): ', ['class' => 'control-label'])}}
 							{{ Form::text('title_uz', null, ['class' => 'form-control']) }}
 							
 						</div>
@@ -87,7 +87,7 @@
 						</div>
 
 						<div class = "form-group">
-							{{ Form::submit('Добавить', ['class' => 'btn btn-success btn-block']) }}
+							{{ Form::submit( __('app.create'), ['class' => 'btn btn-success btn-block']) }}
 						</div>
 					{{ Form::close() }}
 				</div>

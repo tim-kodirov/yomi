@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', ' Фотографии')
+@section('title', '| Фотографии')
 
 @section('styles')
 	<link href="{{ asset("css/lightbox.css") }}" rel="stylesheet">
@@ -8,7 +8,7 @@
 
 @section('content')
 
-	<h1 class = "text-center">Фотографии</h1>
+	<h1 class = "text-center">{{ __('app.photos') }}</h1>
 	<hr>
 	<div class="row">
 		<div class="col-md-8">
@@ -16,11 +16,11 @@
 			@foreach($photos as $photo)
 				<div class="col-md-4 photo-index-list">
 					<div class = "photo-card">
-						<a href = "{{ asset('images/'.$photo->photo)}}" data-lightbox="image-1"><img src="{{ asset('images/'.$photo->photo) }}" alt="{{ App::isLocale('uz') ? $photo->title_uz : $photo->title_ru }}" width = "100%" height="200px"></a>
+						<a href = "{{ asset('images/'.$photo->photo)}}" data-lightbox="{{ "image".$photo->id }}"><img src="{{ asset('images/'.$photo->photo) }}" alt="{{ App::isLocale('uz') ? $photo->title_uz : $photo->title_ru }}" width = "100%"></a>
 						<p class = "info margin-top">
-							Создано: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($photo->created_at))}}</span>
+							{{ __('app.created') }}: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($photo->created_at))}}</span>
 							<br>
-							Изменено: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($photo->updated_at))}}</span>
+							{{ __('app.updated') }}: <span class = "pull-right">{{ date("d.m.y, H:i", strtotime($photo->updated_at))}}</span>
 						</p>
 
 						<p class = "text-right">
@@ -33,17 +33,17 @@
 							    <div class="modal-content">
 							      <div class="modal-header">
 							        
-							        <h4 class="modal-title text-center">Удалить?</h4>
+							        <h4 class="modal-title text-center">{{ __('app.delete') }}?</h4>
 							      </div>
 							      <div class="modal-body">
 							        <div class="row">
 							        	<div class="col-md-6">
 							        		{{ Form::open(['route' => ['photos.destroy', $photo->id ], 'method' => 'DELETE'])}}
-												{{ Form::submit('Да', ['class' => 'btn btn-block btn-danger'])}}
+												{{ Form::submit( __('app.yes'), ['class' => 'btn btn-block btn-danger'])}}
 							        		{{ Form::close() }}
 							        	</div>
 							        	<div class="col-md-6">
-							        		<button type="button" class="btn btn-block btn-success" data-dismiss="modal">Нет</button>
+							        		<button type="button" class="btn btn-block btn-success" data-dismiss="modal">{{ __('app.no') }}</button>
 							        	</div>
 							        </div>
 							      </div>
@@ -69,7 +69,7 @@
 		<div class="col-md-4">
 			<div class = "panel panel-default">
 				<div class = "panel-heading text-center">
-					<h3 class = "margin">Добавить фото</h3>
+					<h3 class = "margin">{{ __('app.create') }}</h3>
 				</div>
 
 				<div class = "panel-body">
@@ -79,7 +79,7 @@
 						</div>
 
 						<div class = "form-group">
-							{{ Form::label('title_uz', 'Заглавие(узб): ', ['class' => 'control-label'])}}
+							{{ Form::label('title_uz', 'Сарлавха(узб): ', ['class' => 'control-label'])}}
 							{{ Form::text('title_uz', null, ['class' => 'form-control']) }}
 							
 						</div>
@@ -91,7 +91,7 @@
 						</div>
 
 						<div class = "form-group">
-							{{ Form::submit('Добавить', ['class' => 'btn btn-success btn-block']) }}
+							{{ Form::submit(__('app.create'), ['class' => 'btn btn-success btn-block']) }}
 						</div>
 					{{ Form::close() }}
 				</div>

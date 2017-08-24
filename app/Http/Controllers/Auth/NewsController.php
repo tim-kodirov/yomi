@@ -16,18 +16,20 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::orderBy('id', 'DESC')->paginate(20);
+        $isDep = $request->isDepartment ? 1 : 0;
 
-        return view('news.index')->withNews($news);
+        $news = News::where('isDepartment', $isDep)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('news.index')->withNews($news)->with('isDepartment', $isDep);
     }
 
     /**
@@ -56,6 +58,7 @@ class NewsController extends Controller
             'overview_ru' => 'required|max:255',
             'body_uz'     => 'required',
             'body_ru'     => 'required',
+            'isDepartment'=> 'boolean'
         ]);
 
 
@@ -65,6 +68,7 @@ class NewsController extends Controller
         $news->title_ru = $request->title_ru;
         $news->overview_uz = $request->overview_uz;
         $news->overview_ru = $request->overview_ru;
+        $news->isDepartment = $request->isDepartment;
 
         $slug = str_slug($news->title_ru, '-');
         $count = News::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
@@ -131,6 +135,7 @@ class NewsController extends Controller
             'overview_ru' => 'required|max:255',
             'body_uz'     => 'required',
             'body_ru'     => 'required',
+            'isDepartment'=> 'boolean'
         ]);
 
 
@@ -140,6 +145,7 @@ class NewsController extends Controller
         $news->title_ru = $request->title_ru;
         $news->overview_uz = $request->overview_uz;
         $news->overview_ru = $request->overview_ru;
+        $news->isDepartment = $request->isDepartment;
 
         $slug = str_slug($news->title_ru, '-');
         $count = News::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
@@ -189,7 +195,7 @@ class NewsController extends Controller
 
         $news->delete();
 
-        Session::flash('success', 'The news has successfully been deleted');
+        Session::flash('success', 'The news has successfully been deleted!');
 
         return redirect()->route('news.index');
     }

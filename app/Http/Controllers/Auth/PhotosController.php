@@ -11,6 +11,11 @@ use Image;
 
 class PhotosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +58,7 @@ class PhotosController extends Controller
         $image = $request->image;
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $location = public_path('images/'.$filename);
-        Image::make($image)->save($location);
+        Image::make($image)->resize(800,400)->save($location);
 
         $photo->photo = $filename;
         $photo->title_uz = $request->title_uz;

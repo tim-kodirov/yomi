@@ -6,32 +6,32 @@
 @section('content')
 
 <h1 class = "text-center">
-<a href = "{{ url()->previous() }}" class = "btn btn-large btn-primary pull-left"><span class = "glyphicon glyphicon-arrow-left"></span></a>
-	Изменить
+<a href = "{{ route('news.index') }}" class = "btn btn-large btn-primary pull-left"><span class = "glyphicon glyphicon-arrow-left"></span></a>
+	{{ __('app.change') }}
 </h1>
 <hr>
 {{ Form::model($news, ['route' => ['news.update', $news->id], 'method' => 'PUT', 'class' => 'form-horizontal', 'files' => 'true']) }}
 
 <div class="row">
 	<div class="col-md-6">
-		<h2 class = "text-center">O'zbekcha</h2>
+		<h2 class = "text-center">Узбекча</h2>
 		<hr>
 		<div class = "form-group">
-			{{ Form::label('title_uz', 'Sarlavha:', ['class' => 'col-md-2'])}}
+			{{ Form::label('title_uz', 'Сарлавха:', ['class' => 'col-md-2'])}}
 			<div class = "col-md-10">
 				{{ Form::text('title_uz', null, ['class' => 'form-control'])}}
 			</div>
 		</div>
 
 		<div class = "form-group">
-			{{ Form::label('overview_uz', 'Tavsif:', ['class' => 'col-md-2'])}}
+			{{ Form::label('overview_uz', 'Тавсиф:', ['class' => 'col-md-2'])}}
 			<div class = "col-md-10">
 				{{ Form::text('overview_uz', null, ['class' => 'form-control'])}}
 			</div>
 		</div>
 
 		<div class = "form-group">
-			{{ Form::label('body_uz', 'Kontent:', ['class' => 'col-md-2'])}}
+			{{ Form::label('body_uz', 'Контент:', ['class' => 'col-md-2'])}}
 			<div class = "col-md-10">
 				{{ Form::textarea('body_uz', null, ['class' => 'form-control', 'rows' => '30'])}}
 			</div>
@@ -64,18 +64,25 @@
 </div>
 
 <div class = "form-group">
-	{{ Form::label('image', 'Картина:', ['class' => 'col-md-2'])}}
-	<div class = "col-md-10">
+	{{ Form::label('image', 'Картина:', ['class' => 'col-md-1'])}}
+	<div class = "col-md-11">
 		{{ Form::file('image', null, ['class' => 'form-control'])}}
 	</div>
 </div>
 
 <div class = "form-group">
+		<div class = "col-md-11 col-md-offset-1">
+			<label class = "radio-inline">{{ Form::radio('isDepartment', 0, true) }} Обычная новость</label>
+			<label class = "radio-inline">{{ Form::radio('isDepartment', 1) }} Про департамент</label>
+		</div>
+	</div>
+
+<div class = "form-group">
 	<div class = "col-md-6">
-		{{ Form::submit('Изменить', ['class' => 'btn btn-success btn-large btn-block'])}}
+		{{ Form::submit(__('app.change'), ['class' => 'btn btn-success btn-large btn-block'])}}
 	</div>
 	<div class = "col-md-6">
-		<a href="{{ route('news.index') }}" class = "btn btn-danger btn-block btn-large">Отмена</a>
+		<a href="{{ route('news.index') }}" class = "btn btn-danger btn-block btn-large">{{ __('app.cancel') }}</a>
 	</div>
 </div>
 

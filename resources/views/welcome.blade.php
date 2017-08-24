@@ -10,6 +10,44 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js" type="text/javascript"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js" t   ype="text/javascript"></script>
+        <script src =" {{ asset("js/vmap.uzbekistan.js")}} " type="text/javascript" ></script>
+
+        <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#vmap').vectorMap({ map: 'uzbekistan',
+            backgroundColor: 'inherit',
+            borderColor: '#818181',
+            borderOpacity: 0.25,
+            borderWidth: 1,
+            color: 'black',
+            enableZoom: true,
+            hoverColor: '#c9dfaf',
+            hoverOpacity: null,
+            normalizeFunction: 'linear',
+            scaleColors: ['#b6d6ff', '#005ace'],
+            selectedColor: '#c9dfaf',
+            selectedRegions: null,
+            showTooltip: true,
+            onRegionClick: function(element, code, region)
+            {
+                var message = 'You clicked "'
+                    + region
+                    + '" which has the code: '
+                    + code.toUpperCase();
+
+                alert(message);
+            }    
+                });
+        });
+        </script>
+
         <!-- Styles -->
         <style>
             html, body {
@@ -90,6 +128,8 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+
+            <div id="vmap" style="width: 600px; height: 400px;"></div>
         </div>
     </body>
 </html>
