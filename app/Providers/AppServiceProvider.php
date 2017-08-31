@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             {
                 $wanted = Wanted::where('is_lost', false)->orderBy('id', 'DESC')->get();
                 $lost = Wanted::where('is_lost', true)->orderBy('id', 'DESC')->get();
+                $events = array();
 
                 $view->withWanted($wanted)->withLost($lost);
             });

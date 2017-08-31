@@ -8,6 +8,8 @@
   @include('partials._header')
 
   <div class="container my-container">
+    @include('partials._navbar')
+    
     <div class="row">
 
       <div class="col-sm-8 padding">
@@ -21,6 +23,8 @@
       </div><!-- end of sidebar-->
 
     </div><!-- end of main row -->
+
+    @yield('additional-content')
   </div>
 
   

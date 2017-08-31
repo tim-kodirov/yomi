@@ -113,11 +113,57 @@ class PagesController extends Controller
     	return view('questions')->withQuestions($questions);
     }
 
-    public function getGallery()
+    public function getGallery($id)
     {
-    	$photos = Photo::orderBy('id', 'DESC')->paginate(32);
+    	if($id == 0 )
+    	{
+    		$photos = Photo::orderBy('id', 'DESC')->paginate(18);
+    		return view('gallery')->withPhotos($photos);
+    	}else
+    	{	
+    		$videos = Video::orderBy('id', 'DESC')->paginate(18);
+    		return view('gallery')->withVideos($videos);
+    	}
+    	
 
-    	return view('gallery')->withPhotos($photos);
+    	
+
+    	
+    }
+
+    public function getDate(Request $request)
+    {
+    	$date = date('Y-m-d', strtotime($request->date));
+    	$normalDate = date('d.m.Y', strtotime($request->date));
+
+    	$news = News::whereDate('created_at', $date)->where('isDepartment', false)->get();
+
+    	$depNews = News::whereDate('created_at', $date)->where('isDepartment', true)->get();
+
+  
+    	return view('date')->withNews($news)->with('depNews', $depNews)->withDate($normalDate);
+    }
+
+    public function getEvents()
+    {
+    	$events = array();
+
+    	$news = News::where('isDepartment', false)->get();
+    	$depNews = News::where('isDepartment', true)->get();
+
+    	foreach($news as $n)
+    	{
+    		$date = date('Y-m-d', strtotime($n->created_at));
+    		$events[] = ['name'=> 'news', 'date' => $date];
+    	}
+
+    	foreach($depNews as $n)
+    	{
+    		$date = date('Y-m-d', strtotime($n->created_at));
+    		$events[] = ['name'=> 'news_dep', 'date' => $date];
+    	}
+
+    	return $events;
     }
 
     public function setLanguage(Request $request)

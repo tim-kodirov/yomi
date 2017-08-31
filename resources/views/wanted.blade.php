@@ -3,7 +3,7 @@
 @section('title', '| '.$title)
 
 @section('content')
-	<h1>{{ __('app.wanted') }}</h1>
+	<h1>{{ Request::is('wanted/0') ? __('app.criminals') : __('app.losts') }}</h1>
     <hr>
       
 
@@ -50,4 +50,19 @@
 	        @endforeach
       	</div>
     </div>
+@endsection
+
+@section('sidebar')
+
+<div class="characters">
+	<h2 class = "text-center">{{ __('app.wanted') }}</h2>
+</div>
+<br>
+<div class="row text-center"> 
+  <a href="{{ route('wanted', 0) }}"><h4>{{ __('app.criminals') }}</h4></a>
+  <hr>
+  <a href="{{ route('wanted', 1) }}"><h4>{{ __('app.losts') }}</h4></a>
+  <hr>
+</div>
+
 @endsection

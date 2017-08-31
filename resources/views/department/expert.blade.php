@@ -19,20 +19,6 @@
 
 @section('sidebar')
 
-<div class="characters">
-	<h2 class = "text-center">Департамент хақида</h2>
-</div>
-<br>
-<div class="row text-center"> 
-  <a href=""><h4>Департамент тарихи</h4></a>
-  <hr>
-  <a href=""><h4>Департамент рахбарияти</h4></a>
-  <hr>
-  <a href=""><h4>Департамент тизими</h4></a>
-  <hr>
-  <a href=""><h4>Эксперт-криминалистика бош <br>бошкармаси</h4></a>
-  <hr>
-  <a href=""><h4>Ахборот маркази</h4></a>
-</div>
+@include('partials._department_sidebar')
 
 @endsection

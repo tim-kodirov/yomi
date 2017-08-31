@@ -11,7 +11,7 @@ return [
     'nav_documents' => 'Хужжатлар',
     'nav_news' => 'Янгиликлар',
     'nav_news_dep' => 'Департамент хабарлари',
-    'nav_questions' => 'Саволлар ва жавоблар',
+    'nav_questions' => 'Савол ва жавоб',
     'nav_gallery' => 'Галарея',
     'department_history' => 'Департамент тарихи',
     'department_managers' => 'Департамент рахбарияти',
@@ -23,6 +23,7 @@ return [
     'functions_articles' => 'Илмий-амалий мақолалар',
     'functions_library' => 'Электрон кутубхона',
     'functions_work' => 'Бўш иш ўринлари',
+    'dep_name' => 'ЎЗБЕКИСТОН РЕСПУБЛИКАСИ ИЧКИ ИШЛАР ВАЗИРЛИГИ ХУЗУРИДАГИ ТЕРГОВ ДЕПАРТАМЕНТИ',
 
     'photos' => 'Расмлар',
     'videos' => 'Видеолар',
@@ -31,6 +32,7 @@ return [
 
     'interactive_services' => 'Интерактив хизматлар',
     'online_service' => 'Онлайн мурожат',
+    'admission_service' => 'Кабул килиш',
     'urgent_search' => 'Диккат кидирув',
     'criminals' => 'Қидирувдаги жиноятчилар',
     'losts' => 'Бедарак йўқолганлар',
@@ -63,6 +65,8 @@ return [
     'question' => 'Савол',
     'read_more' => 'Копрог',
     'search' => 'Кидириш',
+    'no_results' => 'Натижа топилмади',
+    'send' => 'Юбориш',
 
 
 ];

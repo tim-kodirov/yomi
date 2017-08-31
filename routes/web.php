@@ -19,6 +19,10 @@ Route::get('/', 'PagesController@getIndex')->name('main');
 Route::get('/news/{id}', 'PagesController@getNews')->name('news')->where('id', '[{0,1}?]');
 Route::get('/news/{slug}', 'PagesController@getSingleNews')->where('slug', '[\w\d\-\_]+')->name('news.single');
 
+//date
+Route::get('/date', 'PagesController@getDate');
+Route::get('/events', 'PagesController@getEvents');
+
 //documents
 Route::get('/documents', 'PagesController@getDocuments')->name('documents');
 //department
@@ -37,7 +41,7 @@ Route::get('/symbols', 'PagesController@getSymbols')->name('symbols');
 Route::get('/questions', 'PagesController@getQuestions')->name('questions');
 
 //gallery
-Route::get('/gallery', 'PagesController@getGallery')->name('gallery');
+Route::get('/gallery/{id}', 'PagesController@getGallery')->name('gallery')->where('id', '[{0,1}?]');
 
 
 Auth::routes();
