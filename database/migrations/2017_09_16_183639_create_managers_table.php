@@ -19,7 +19,8 @@ class CreateManagersTable extends Migration
             $table->string('info_uz');
             $table->string('info_ru');
             $table->string('contact')->nullable();
-            $table->string('admission_days')->nullable();
+            $table->string('admission_days_uz')->nullable();
+            $table->string('admission_days_ru')->nullable();
             $table->string('address_uz');
             $table->string('address_ru');
             $table->integer('city_id')->unsigned();

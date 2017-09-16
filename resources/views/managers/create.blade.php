@@ -26,6 +26,13 @@
 					{{ Form::text('address_uz', null, ['class' => 'form-control'])}}
 				</div>
 			</div>
+
+			<div class = "form-group">
+				{{ Form::label('admission_uz', 'Кабул кунлари:', ['class' => 'col-md-2'])}}
+				<div class = "col-md-10">
+					{{ Form::text('admission_uz', null, ['class' => 'form-control'])}}
+				</div>
+			</div>
 		</div>
 		<div class="col-md-6">
 			<h2 class = "text-center">Русский</h2>
@@ -43,6 +50,13 @@
 					{{ Form::text('address_ru', null, ['class' => 'form-control'])}}
 				</div>
 			</div>
+
+			<div class = "form-group">
+				{{ Form::label('admission_ru', 'Даты приема:', ['class' => 'col-md-2'])}}
+				<div class = "col-md-10">
+					{{ Form::text('admission_ru', null, ['class' => 'form-control'])}}
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -57,15 +71,6 @@
 		</div>
 	</div>
 
-	<div class = "form-group">
-		<div class="col-md-1">
-			{{ Form::label('admission', 'Кабул кунлари:')}}
-		</div>
-		
-		<div class = "col-md-11">
-			{{ Form::text('admission', null, ['class' => 'form-control'])}}
-		</div>
-	</div>
 
 	<div class = "form-group">
 		<div class="col-md-1">

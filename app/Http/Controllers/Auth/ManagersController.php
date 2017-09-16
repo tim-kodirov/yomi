@@ -45,7 +45,8 @@ class ManagersController extends Controller
                 'info_uz' => 'required|max:255',
                 'info_ru' => 'required|max:255',
                 'contact' => 'max:191',
-                'admission' => 'max:191',
+                'admission_uz' => 'max:191',
+                'admission_ru' => 'max:191',
                 'address_uz' => 'required|max:191',
                 'address_ru' => 'required|max:191',
                 'city_id' => 'exists:cities,id',
@@ -65,9 +66,13 @@ class ManagersController extends Controller
         {
             $manager->contact = $request->contact;
         }
-        if($request->has('admission'))
+        if($request->has('admission_uz'))
         {
-            $manager->admission_days = $request->admission;
+            $manager->admission_days_uz = $request->admission_uz;
+        }
+        if($request->has('admission_ru'))
+        {
+            $manager->admission_days_ru = $request->admission_ru;
         }
         if($request->has('admission'))
         {
