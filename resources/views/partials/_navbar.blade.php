@@ -22,23 +22,17 @@
             <li role="separator" class="divider"></li>
             <li><a href="{{ route('department', 3) }}">{{ __('app.department_system') }}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ route('department', 4) }}">{{ __('app.department_expert') }}</a></li>
+            <li><a href="{{ route('department', 4) }}">{{ __('app.department_functions') }}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ route('department', 5) }}">{{ __('app.department_information') }}</a></li>
+            <li><a href="{{ route('department', 5) }}">{{ __('app.department_rights') }}</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ __('app.nav_functions') }} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ __('app.nav_expert') }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('functions', 1) }}">{{ __('app.functions_main') }}</a></li>
+            <li><a href="{{ route('expert', 1) }}">{{ __('app.expert_main') }}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ route('functions', 2) }}">{{ __('app.functions_rights') }}</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{ route('functions', 3) }}">{{ __('app.functions_articles') }}</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{ route('functions', 4) }}">{{ __('app.functions_library') }}</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{ route('functions', 5) }}">{{ __('app.functions_work') }}</a></li>
+            <li><a href="{{ route('expert', 2) }}">{{ __('app.expert_contact') }}</a></li>
           </ul>
         </li>
         <li><a href="{{ route('documents') }}">{{ __('app.nav_documents') }}</a></li>

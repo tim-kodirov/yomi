@@ -29,7 +29,7 @@ Route::get('/documents', 'PagesController@getDocuments')->name('documents');
 Route::get('/department/{id}', 'PagesController@getDepartment')->name('department')->where('id', '[1-5]+');
 
 //functions
-Route::get('/functions/{id}', 'PagesController@getFunctions')->name('functions')->where('id', '[1-5]+');
+Route::get('/expert/{id}', 'PagesController@getExpert')->name('expert')->where('id', '[1-2]+');
 
 
 Route::get('/wanted/{id}', 'PagesController@getWanted')->name('wanted')->where('id', '[{0,1}?]');
@@ -74,6 +74,7 @@ Route::prefix('admin')->group(function(){
 	Route::post('questions/answer/{id}', 'Auth\QuestionsController@setAnswer')->name('questions.answer');
  	Route::resource('questions', 'Auth\QuestionsController');
  	
-
+ 	Route::resource('managers', 'Auth\ManagersController');
+ 	
 	Route::get('/', 'Auth\AdminController@index');
 });

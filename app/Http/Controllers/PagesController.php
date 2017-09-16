@@ -17,6 +17,7 @@ class PagesController extends Controller
 
 	public function getIndex()
 	{
+
 		$news = News::where('isDepartment', false)->orderBy('id', 'DESC')->take(4)->get();
 		$depNews = News::where('isDepartment', true)->orderBy('id', 'DESC')->take(4)->get();
 		$photos = Photo::orderBy('id', 'DESC')->take(3)->get();
@@ -52,31 +53,22 @@ class PagesController extends Controller
 				return view('department.system');
 				break;
 			case 4:
-				return view('department.expert');
+				return view('department.functions');
 				break;
 			case 5:
-				return view('department.information');
+				return view('department.huquq');
 				break;
 		}
 	}
 
-	public function getFunctions($id)
+	public function getExpert($id)
 	{
 		switch ($id) {
 			case 1:
 				return view('functions.main');
 				break;
 			case 2:
-				return view('functions.huquqiy');
-				break;
-			case 3:
-				return view('functions.maqolalar');
-				break;
-			case 4:
-				return view('functions.kutubhona');
-				break;
-			case 5:
-				return view('functions.ish');
+				return view('functions.contact');
 				break;
 		}
 	}

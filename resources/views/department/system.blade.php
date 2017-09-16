@@ -4,9 +4,9 @@
 
 @section('content')
 
-<h2 class = "color-title">Вазирлик тизими</h2>
+<h2 class = "color-title">{{ __('app.department_system') }}</h2>
 <hr>
-<img src="img/tizim.png">
+<img src="{{ asset('images/tizim.png') }}" width = "100%">
 
 <br>
 <br>

@@ -273,3 +273,19 @@ img{
 {
 	margin-bottom: 10px;
 }
+
+.my-preserve-data
+{ 
+	white-space: pre-wrap; 
+}
+
+.my-preserve-data p 
+{
+	margin: 0px;
+}
+
+.bordered-padding
+{
+	border: 1px solid black;
+	padding: 10px;
+}

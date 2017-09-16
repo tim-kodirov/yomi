@@ -34,7 +34,7 @@
             <li><a href="{{ route('department', 0) }}">{{ __('app.nav_department') }}</a></li>
             <li><a href="{{ route('documents') }}">{{ __('app.nav_documents') }}</a></li>
             <li><a href="{{ route('gallery', 0) }}">{{ __('app.nav_gallery') }}</a></li>
-            <li><a href="{{ route('functions', 1) }}">{{ __('app.nav_functions') }}</a></li>
+            <li><a href="{{ route('expert', 1) }}">{{ __('app.nav_functions') }}</a></li>
           </ul>
           
           
