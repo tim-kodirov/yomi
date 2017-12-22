@@ -7,10 +7,10 @@
   <hr>
   <a href="{{ route('department', 2) }}"><h4>{{ __('app.department_managers') }}</h4></a>
   <hr>
-  <a href="{{ route('department', 3) }}"><h4>{{ __('app.department_system') }}</h4></a>
-  <hr>
-  <a href="{{ route('department', 4) }}"><h4>{{ __('app.department_functions') }}</h4></a>
+
+  <a href="{{ route('department', 4) }}"><h4>{!! __('app.department_functions') !!}</h4></a>
   <hr>
   <a href="{{ route('department', 5) }}"><h4>{{ __('app.department_rights') }}</h4></a>
   <hr>
+  
 </div>

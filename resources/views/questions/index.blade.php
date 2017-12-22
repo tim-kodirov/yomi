@@ -4,6 +4,15 @@
 
 @section('content')
 
+
+<div class="pull-right margin-top-20">
+
+	<select name = "is_citizen" class = "news-type-select">
+		<option value = "1" {{ $is_citizen ? 'selected' : ''}}>{{ __('app.citizen_question') }}</option>
+		<option value = "0" {{ $is_citizen ? '' : 'selected'}}>{{ __('app.employee_question') }}</option>
+	</select>
+</div>
+
 <h1 class = "text-center">{{ __('app.nav_questions') }}</h1>
 <hr>
 
@@ -76,7 +85,7 @@
 			    <!-- Modal content-->
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title text-center">{{ __('app.change') }}</h4>
 			      </div>
 			      <div class="modal-body">
@@ -103,10 +112,27 @@
 								{{ Form::label('phone_number', 'Номер: ') }}
 								{{ Form::text('phone_number', null,['class' => 'form-control'])}}
 							</div>
+							
+							<div class="form-group">
+								{{ Form::label('address', 'Адресс: ') }}
+								{{ Form::text('address', null, ['class' => 'form-control'])}}
+							</div>
 
 							<div class="form-group">
 								{{ Form::label('question', __('app.question').': ') }}
 								{{ Form::textarea('question', null,['class' => 'form-control'])}}
+							</div>
+
+							<div class="form-group">
+								<label class = "radio-inline">
+								{{ Form::radio('is_citizen', 1, ['class' => 'form-control'])}}
+								{{ __('app.citizen_question') }}
+								</label>
+
+								<label class = "radio-inline">
+								{{ Form::radio('is_citizen', 0, ['class' => 'form-control'])}}
+								{{ __('app.employee_question') }}
+								</label>
 							</div>
 
 			        	</div>
@@ -162,4 +188,14 @@
 	</div>
 </div>
 @endforeach
+@endsection
+
+@section('scripts')
+	<script type="text/javascript">
+		$('.news-type-select').change(function()
+			{	
+				var val = $(this).val();
+				window.location.replace('/admin/questions?is_citizen='+val);
+			});
+	</script>
 @endsection

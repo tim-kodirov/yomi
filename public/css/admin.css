@@ -56,6 +56,11 @@ body
 {
 	margin: 0px;
 }
+.margin-left
+{
+	margin-left: 10px;
+}
+
 .color-title
 {
 	color: #475681;

@@ -22,40 +22,41 @@
 <body>
     <div id="app">
 
+        
+        <div class="admin-content">
+            {{ Form::open(['route' => 'logout', 'class' => 'pull-right margin-left']) }}
+                {{ Form::submit( __('app.exit'), ['class' => 'btn btn-warning']) }}
+            {{ Form::close() }}
+
+            {{ Form::open(['route' => 'lang', 'class' => 'pull-right margin-left']) }}
+              <input type = "hidden" name = "lang" value = "ru"/>
+              <button type="submit" class="btn {{ App::isLocale('ru') ? 'btn-primary' : 'btn-default'}}">RU</button>
+            {{ Form::close() }}
+
+            {{ Form::open(['route' => 'lang', 'class' => 'pull-right']) }}
+              <input type = "hidden" name = "lang" value = "uz"/>
+              <button type="submit" class="btn {{ App::isLocale('uz') ? 'btn-primary' : 'btn-default'}}">UZ</button>
+            {{ Form::close() }}
+        </div>
+
         <div class = "container-fluid admin-page"> 
 			<div class = "row">
 				<div class = "col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{ Form::open(['route' => 'lang', 'class' => 'pull-right margin-left']) }}
-                          <input type = "hidden" name = "lang" value = "ru"/>
-                          <button type="submit" class="btn {{ App::isLocale('ru') ? 'btn-primary' : 'btn-default'}}">RU</button>
-                        {{ Form::close() }}
-
-                        {{ Form::open(['route' => 'lang', 'class' => 'pull-right']) }}
-                          <input type = "hidden" name = "lang" value = "uz"/>
-                          <button type="submit" class="btn {{ App::isLocale('uz') ? 'btn-primary' : 'btn-default'}}">UZ</button>
-                        {{ Form::close() }}
-                        </div>
-                        
-                    </div>
+                    
 					<ul class = "nav nav-tabs">
-						<li class = "{{ Request::is('admin') ? 'active' : '' }}"><a href="/admin"><h3>{{ __('app.nav_main') }}</h3></a></li>
-                        <li class = "{{ Request::is('admin/news') ? 'active' : '' }}"><a href="/admin/news"><h3>{{ __('app.nav_news') }}</h3></a></li>
-						<li class = "{{ Request::is('admin/photos') ? 'active' : '' }}"><a href="/admin/photos"><h3>{{ __('app.photos') }}</h3></a></li>
-                        <li class = "{{ Request::is('admin/videos') ? 'active' : '' }}"><a href="/admin/videos"><h3>{{ __('app.videos') }}</h3></a></li>
-                        <li class = "{{ Request::is('admin/documents') ? 'active' : '' }}"><a href="/admin/documents"><h3>{{ __('app.nav_documents') }}</h3></a></li>
-                        <li class = "{{ Request::is('admin/wanted') ? 'active' : '' }}"><a href="/admin/wanted"><h3>{{ __('app.wanted') }}</h3></a></li>
-                        <li class = "{{ Request::is('admin/questions') ? 'active' : '' }}"><a href="/admin/questions"><h3>{{ __('app.nav_questions') }}
+						<li class = "{{ Request::is('admin') ? 'active' : '' }}"><a href="/admin"><h4>{{ __('app.nav_main') }}</h4></a></li>
+                        <li class = "{{ Request::is('admin/news') ? 'active' : '' }}"><a href="/admin/news"><h4>{{ __('app.nav_news') }}</h4></a></li>
+						<li class = "{{ Request::is('admin/photos') ? 'active' : '' }}"><a href="/admin/photos"><h4>{{ __('app.photos') }}</h4></a></li>
+                        <li class = "{{ Request::is('admin/videos') ? 'active' : '' }}"><a href="/admin/videos"><h4>{{ __('app.videos') }}</h4></a></li>
+                        <li class = "{{ Request::is('admin/documents') ? 'active' : '' }}"><a href="/admin/documents"><h4>{{ __('app.nav_documents') }}</h4></a></li>
+                        <li class = "{{ Request::is('admin/wanted') ? 'active' : '' }}"><a href="/admin/wanted"><h4>{{ __('app.wanted') }}</h4></a></li>
+                        <li class = "{{ Request::is('admin/questions') ? 'active' : '' }}"><a href="/admin/questions"><h4>{{ __('app.nav_questions') }}
                         @if($questions_count > 0)
                             <span class = "badge">{{ $questions_count }}</span>
                         @endif
-                        </h3></a></li>
-                        <li class = "pull-right">
-                            {{ Form::open(['route' => 'logout']) }}
-                                {{ Form::submit( __('app.exit'), ['class' => 'btn btn-warning margin-top-30']) }}
-                            {{ Form::close() }}
-                        </li>
+                        </h4></a></li>
+                        <li class = "{{ Request::is('admin/library') ? 'active' : '' }}"><a href="/admin/library"><h4>{{ __('app.library') }}</h4></a></li>
+                        
 					</ul>
 
                     

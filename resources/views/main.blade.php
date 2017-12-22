@@ -6,12 +6,12 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css" media="screen" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="{{ asset("sliderengine/amazingslider-1.css")}}">
 @endsection
-
+<div class="website-appearance">
 @section('content')
 
 <ul class="nav nav-pills">
-  <li class="active"><a data-toggle="tab" href="#menu1">{{ __('app.photos') }}</a></li>
-  <li><a data-toggle="tab" href="#menu2">{{ __('app.videos') }}</a></li>
+  <li class="active"><a data-toggle="tab" href="#menu1"><b> ФОТО </b></a></li>
+  <li><a data-toggle="tab" href="#menu2"><b> ВИДЕО </b></a></li>
 </ul>
 <br>
 <div class="tab-content" >
@@ -59,14 +59,13 @@
   </div>
 </div>
 
-<h2>{{ __('app.interactive_services') }}</h2>
 @if(Session::has('question_sent'))
-  <div class="alert alert-success">
+  <div class="alert alert-success margin-top-20">
     {{ Session::get('question_sent') }}
   </div>
 @endif
 @if(count($errors) > 0)
-<div class="alert alert-danger">
+<div class="alert alert-danger margin-top-20">
   <ul>
     @foreach($errors as $error)
     <li> {{ $error }}</li>
@@ -74,134 +73,16 @@
   </ul>
 </div>
 @endif
-<div class="alert alert-info text-center">
-  <div class="row">
-    <div class = "col-sm-4 btn-grp">
-      <button data-toggle="modal" data-target="#myModal" class="btn btn-darkblue btn-lg btn-block" role="button">{{ __('app.online_service') }}</button>
-    </div>
-
-    <div class = "col-sm-4 btn-grp">
-      <button data-toggle="modal" data-target="#myDateModal" class="btn btn-darkblue btn-lg btn-block" role="button">{{ __('app.admission_service') }}</button>
-    </div>
-
-    <div class = "col-sm-4 btn-grp">
-      <a href="{{ route('questions') }}" class="btn btn-darkblue btn-lg btn-block" role="button">{{ __('app.nav_questions') }}</a>
-    </div>
-  </div>
-  <strong>
-  
-  
-  
-  </strong> 
-</div>
 
 
 
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
 
-    <div class="modal-content">
-      {!! Form::open(['route' => 'questions.store']) !!}
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{ __('app.online_service') }}</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="first_name">{{ __('app.f_name') }}:</label>
-          <input type="text" class="form-control" id="first_name" name="first_name">
-        </div>
-        <div class="form-group">
-          <label for="last_name">{{ __('app.s_name') }}:</label>
-          <input type="text" class="form-control" id="last_name" name="last_name">
-        </div>
-        <div class="form-group">
-          <label for="middle_name">{{ __('app.m_name') }}:</label>
-          <input type="text" class="form-control" id="middle_name" name="middle_name">
-        </div>
-        <div class="form-group">
-          <label for="phone_number">Телефон:</label>
-          <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="901234567">
-        </div>
-        <div class="form-group">
-          <label for="question">{{ __('app.question') }}:</label>
-          <textarea class="form-control" rows="5" id="question" name="question"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success btn-block">{{ __('app.send') }}</button>
-      </div>
-      {!! Form::close() !!}
-    </div>
-    
-  </div>
-</div>
 
-<div class="modal fade" id="myDateModal" role="dialog">
-  <div class="modal-dialog">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{ __('app.admission_service') }}</h4>
-      </div>
-      <div class="modal-body">
-        <table class = "table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Лавозими</th>
-              <th>Ф.И.Ш</th>
-              <th>Кабул кунлари</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-
-            <tr>
-              <td>Ички Ишлар Вазирлиги вазири</td>
-              <td>Азизов Абдусалом Абдумавлянович</td>
-              <td>Душанба, 10.00 дан 12.00 гача</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-  </div>
-</div>
   
 <h2>
-<p class = "pull-right all-news-link margin-top-20"><a href="{{ route('news', 0) }}">{{ __('app.all_news') }}</a></p>
-{{ __('app.nav_news') }}
+<p class = "pull-right all-news-link margin-top-20"><a href="{{ route('news', 0) }}"><b>{{ __('app.all_news') }}</b></a></p>
+<b>{{ mb_strtoupper(__('app.nav_news')) }}</b>
 </h2>
 <hr>
 <div class="row">
@@ -230,8 +111,8 @@
 
 
 <h2>
-<p class = "pull-right margin-top-20 all-news-link"><a href="{{ route('news', 1) }}">{{ __('app.all_news') }}</a></p>
-{{ __('app.nav_news_dep') }}
+<p class = "pull-right margin-top-20 all-news-link"><a href="{{ route('news', 1) }}"><b>{{ __('app.all_news') }}</b></a></p>
+<b>{{ mb_strtoupper(__('app.nav_news_dep')) }}</b>
 </h2>
 <hr>
 <div class="row">
@@ -262,13 +143,14 @@
 @endsection
 
 @section('additional-content')
-
+<!--
 <div id = "world">
   <div id="vmap" style="width: 100%;"></div>
 </div>
-
+-->
 
 @endsection
+</div>
 
 
 @section('scripts')

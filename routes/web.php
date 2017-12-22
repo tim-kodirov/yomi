@@ -26,7 +26,7 @@ Route::get('/events', 'PagesController@getEvents');
 //documents
 Route::get('/documents', 'PagesController@getDocuments')->name('documents');
 //department
-Route::get('/department/{id}', 'PagesController@getDepartment')->name('department')->where('id', '[1-5]+');
+Route::get('/department/{id}', 'PagesController@getDepartment')->name('department');
 
 //functions
 Route::get('/expert/{id}', 'PagesController@getExpert')->name('expert')->where('id', '[1-2]+');
@@ -42,7 +42,8 @@ Route::get('/questions', 'PagesController@getQuestions')->name('questions');
 
 //gallery
 Route::get('/gallery/{id}', 'PagesController@getGallery')->name('gallery')->where('id', '[{0,1}?]');
-
+//library
+Route::get('/library', 'PagesController@getLibrary')->name('library');
 
 Auth::routes();
 
@@ -50,6 +51,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //change language
 Route::post('/lang', 'PagesController@setLanguage')->name('lang');
+
+
+//search
+Route::get('/search', 'PagesController@search')->name('search');
 
 Route::prefix('admin')->group(function(){
 	//photos resource
@@ -74,7 +79,12 @@ Route::prefix('admin')->group(function(){
 	Route::post('questions/answer/{id}', 'Auth\QuestionsController@setAnswer')->name('questions.answer');
  	Route::resource('questions', 'Auth\QuestionsController');
  	
+ 	//managers resource
  	Route::resource('managers', 'Auth\ManagersController');
  	
+ 	//libraries resource
+ 	Route::resource('library', 'Auth\LibraryController');
+
+
 	Route::get('/', 'Auth\AdminController@index');
 });

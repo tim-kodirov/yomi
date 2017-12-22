@@ -20,11 +20,17 @@ class WantedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $wanted = Wanted::orderBy('id', 'DESC')->paginate(20);
+        $is_lost = 1;
+        if($request->has('is_lost'))
+        {
+            $is_lost = $request->is_lost ? 1 : 0;
+        }
 
-        return view('wanted.index')->withWanted($wanted);
+        $wanted = Wanted::where('is_lost', $is_lost)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('wanted.index')->withWanted($wanted)->with('is_lost', $is_lost);
     }
 
     /**
@@ -64,7 +70,7 @@ class WantedController extends Controller
 
         $image = $request->image;
         $filename = time().".".$image->getClientOriginalExtension();
-        $location = public_path('images/wanted/'.$filename); 
+        $location = public_path('images/wanted/'.$filename);
 
         Image::make($image)->save($location);
 

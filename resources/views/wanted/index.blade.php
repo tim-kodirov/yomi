@@ -4,6 +4,14 @@
 
 @section('content')
 
+<div class="pull-right margin-top-20">
+
+	<select name = "is_lost" class = "news-type-select">
+		<option value = "0" {{ $is_lost ? '' : 'selected'}}>{{ __('app.criminals') }}</option>
+		<option value = "1" {{ $is_lost ? 'selected' : ''}}>{{ __('app.losts') }}</option>
+	</select>
+</div>
+
 <h1 class = "text-center">{{__('app.wanted')}}</h1>
 <hr>
 <div class="row">
@@ -176,4 +184,14 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+	<script type="text/javascript">
+		$('.news-type-select').change(function()
+			{	
+				var val = $(this).val();
+				window.location.replace('/admin/wanted?is_lost='+val);
+			});
+	</script>
 @endsection

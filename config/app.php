@@ -79,7 +79,7 @@ return [
 
     'locale' => 'uz',
 
-    'locales' => ['ru' => 'Russian', 'uz' => 'Uzbek'],
+    'locales' => ['ru' => 'Russian', 'uz' => 'Uzbek', 'en' => 'English'],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

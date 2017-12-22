@@ -4,8 +4,11 @@
 
 @section('content')
 
-<h1 class = "text-center">Создать</h1>
+<h1 class = "text-center">
+<a href = "{{ route('managers.index') }}" class = "btn btn-large btn-primary pull-left"><span class = "glyphicon glyphicon-arrow-left"></span></a>
+{{ __('app.create') }}</h1>
 <hr>
+
 {{ Form::open(['route' => 'managers.store', 'class' => 'form-horizontal', 'files' => 'true']) }}
 	
 

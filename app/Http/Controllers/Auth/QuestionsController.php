@@ -18,9 +18,16 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $questions = Question::orderBy('id', 'DESC')->paginate(30);
+        $is_citizen = 1;
+
+        if($request->has('is_citizen'))
+        {
+            $is_citizen = $request->is_citizen ? 1 : 0;
+        }
+
+        $questions = Question::where('is_citizen', $is_citizen)->orderBy('id', 'DESC')->paginate(30);
 
         foreach ($questions as $q) {
             if(!$q->is_seen)
@@ -31,7 +38,7 @@ class QuestionsController extends Controller
             }   
         }
 
-        return view('questions.index')->withQuestions($questions);
+        return view('questions.index')->withQuestions($questions)->with('is_citizen', $is_citizen);
     }
 
     /**
@@ -58,6 +65,8 @@ class QuestionsController extends Controller
                 'middle_name' => 'required|max:191',
                 'phone_number' => 'required|integer|digits:9',
                 'question' => 'required',
+                'address' => 'required|max:191',
+                'is_citizen' => 'required|boolean'
             ]);
 
     
@@ -68,7 +77,8 @@ class QuestionsController extends Controller
         $question->middle_name = $request->middle_name;
         $question->phone_number = $request->phone_number;
         $question->question = $request->question;
-
+        $question->address = $request->address;
+        $question->is_citizen = $request->is_citizen;
         $question->save();
 
         Session::flash('question_sent', 'Вопрос отправлен!');
@@ -117,6 +127,8 @@ class QuestionsController extends Controller
                 'middle_name' => 'required|max:191',
                 'phone_number' => 'required|integer|digits:9',
                 'question' => 'required',
+                'address' => 'required|max:191',
+                'is_citizen' => 'required|boolean'
             ]);
 
     
@@ -127,6 +139,8 @@ class QuestionsController extends Controller
         $question->middle_name = $request->middle_name;
         $question->phone_number = $request->phone_number;
         $question->question = $request->question;
+        $question->address = $request->address;
+        $question->is_citizen = $request->is_citizen;
 
         $question->save();
 
